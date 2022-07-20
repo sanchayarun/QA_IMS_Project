@@ -66,13 +66,15 @@ public class OrderItemController implements CrudController<OrderItem>{
 	 */
 	@Override
 	public OrderItem update() {
+		LOGGER.info("Please enter the order_item_id");
+		Long orderItemId = utils.getLong();
 		LOGGER.info("Please enter the order id ");
 		Long orderId = utils.getLong();
 		LOGGER.info("Please enter the item id");
 		Long itemId = utils.getLong();
 		LOGGER.info("Please enter the quantity");
 		Long quantity = utils.getLong();
-		OrderItem orderItem = orderItemDAO.update(new OrderItem(orderId, itemId, quantity));
+		OrderItem orderItem = orderItemDAO.update(new OrderItem(orderItemId, orderId, itemId, quantity));
 		LOGGER.info("Order Item Updated");
 		return orderItem;
 	}

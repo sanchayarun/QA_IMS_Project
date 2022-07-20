@@ -44,7 +44,7 @@
 			public List<Order> readAll() {
 				try (Connection connection = DBUtils.getInstance().getConnection();
 						Statement statement = connection.createStatement();
-						ResultSet resultSet = statement.executeQuery("SELECT * FROM orders o INNER JOIN order_items oi ON o.order_id = oi.fk_order_id INNER JOIN items i ON oi.fk_item_id = i.item_id");) {
+						ResultSet resultSet = statement.executeQuery("SELECT * FROM orders");) {
 					List<Order> orders = new ArrayList<>();
 					while (resultSet.next()) {
 						orders.add(modelFromResultSet(resultSet));
@@ -86,8 +86,8 @@
 				try (Connection connection = DBUtils.getInstance().getConnection();
 						PreparedStatement statement = connection
 								.prepareStatement("INSERT INTO orders(fk_customer_id) VALUES (?)");) { 
-					statement.setString(1, order.getItemName());
-					statement.setDouble(2, order.getItemPrice());
+//					statement.setLong(1, order.getOrderId());
+					statement.setLong(1, order.getCustomerId());
 					statement.executeUpdate();
 					return readLatest();
 				} catch (Exception e) {
