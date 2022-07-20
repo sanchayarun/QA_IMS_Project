@@ -26,12 +26,12 @@
 			public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
 				Long orderId = resultSet.getLong("order_id");
 				Long customerId = resultSet.getLong("fk_customer_id");
-				Long itemId = resultSet.getLong("item_id");
-				String itemName = resultSet.getString("item_name");
-				Double itemPrice = resultSet.getDouble("item_price");
-				Long quantity = resultSet.getLong("quantity");
-				Double totalCost = resultSet.getDouble("Need to put in a sum of quantity * price");   // need to add commands for MySQL to return price
-				return new Order(orderId, customerId, itemId, itemName, itemPrice, quantity, totalCost);
+//				Long itemId = resultSet.getLong("item_id");
+//				String itemName = resultSet.getString("item_name");
+//				Double itemPrice = resultSet.getDouble("item_price");
+//				Long quantity = resultSet.getLong("quantity");
+//				Double totalCost = resultSet.getDouble("Need to put in a sum of quantity * price");   // need to add commands for MySQL to return price
+				return new Order(orderId, customerId);
 			}
 		
 			
