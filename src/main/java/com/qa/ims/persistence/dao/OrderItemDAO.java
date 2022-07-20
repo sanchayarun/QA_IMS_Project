@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 import com.qa.ims.persistence.domain.OrderItem;
 import com.qa.ims.utils.DBUtils;
 
-public class OrderItemsDAO implements Dao<OrderItem> {
+public class OrderItemDAO implements Dao<OrderItem> {
 	
 	
 public static final Logger LOGGER = LogManager.getLogger();
