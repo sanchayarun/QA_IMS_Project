@@ -51,7 +51,7 @@ public class OrderController implements CrudController<Order> {
 		 */
 		@Override
 		public Order create() {
-			LOGGER.info("Please enter id of order");
+			LOGGER.info("Please enter the customer id for order");
 			Long customerId = utils.getLong();
 			Order order = orderDAO.create(new Order(customerId));
 			LOGGER.info("Order ID Generated - Please READ the orderID and create OrderItems");

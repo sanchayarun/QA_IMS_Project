@@ -86,7 +86,7 @@ public static final Logger LOGGER = LogManager.getLogger();
 						.prepareStatement("INSERT INTO order_items(fk_order_id, fk_item_id, Quantity) VALUES (?, ?, ?)");) {
 			statement.setLong(1, orderItem.getFkOrderId());
 			statement.setLong(2, orderItem.getFkItemId());
-			statement.setLong(1, orderItem.getQuantity());
+			statement.setLong(3, orderItem.getQuantity());
 			statement.executeUpdate();
 			return readLatest();
 		} catch (Exception e) {
