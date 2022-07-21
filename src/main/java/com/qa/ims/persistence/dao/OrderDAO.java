@@ -108,7 +108,7 @@
 			@Override
 			public Order read(Long orderId) {
 				try (Connection connection = DBUtils.getInstance().getConnection();
-						PreparedStatement statement = connection.prepareStatement("SELECT * FROM orders o INNER JOIN order_items oi ON o.order_id = oi.fk_order_id INNER JOIN items i ON oi.fk_item_id = i.item_id WHERE item_id = ?");) {
+						PreparedStatement statement = connection.prepareStatement("SELECT * FROM orders o INNER JOIN order_items oi ON o.order_id = oi.fk_order_id INNER JOIN items i ON oi.fk_item_id = i.item_id WHERE order_id = ?");) {
 					statement.setLong(1, orderId);
 					try (ResultSet resultSet = statement.executeQuery();) {
 						resultSet.next();
