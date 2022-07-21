@@ -87,8 +87,8 @@ public class OrderItem {
 	
 	@Override
 	public String toString() {
-		return "order item id=" + orderItemId + ", order id=" + fkOrderId + ", item id=" + fkItemId
-				+ ", quantity=" + quantity;
+		return "order item id:" + orderItemId + ", order id:" + fkOrderId + ", item id:" + fkItemId
+				+ ", quantity:" + quantity;
 	}
 
 
