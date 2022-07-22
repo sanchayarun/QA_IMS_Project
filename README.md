@@ -135,7 +135,7 @@ These integration tests were done on CustomerController
 We use [GitHub](https://github.com) for versioning.
 
 ## Authors
-* **Sanchayan Arudchelvam - *Finished Product* [SanchayArun](https://github.com/sanchayarun)
+* **Sanchayan Arudchelvam - *Finished Product* - [SanchayArun](https://github.com/sanchayarun)
 * **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
 
 ## License
