@@ -54,7 +54,7 @@ db.password="password here" - (default is  = root)
 #### Step Four
 Open eclipse and open the QA_IMS_Project. right click on the Runner.java file and run as Java application. The program should start in the console. The console should look like this:
 ```
-![Screenshot 2022-07-22 at 16 03 47](https://user-images.githubusercontent.com/72186807/180468193-38000a95-d022-4848-b7a0-692a49385852.png)
+https://user-images.githubusercontent.com/72186807/180468193-38000a95-d022-4848-b7a0-692a49385852.png
 
 ```
 #### Step Five
