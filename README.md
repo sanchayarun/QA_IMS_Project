@@ -38,7 +38,7 @@ How to download the IMS to your computer.
  enter the following command in to the terminal: git clone git@github.com:sanchayarun/QA_IMS_Project.git
 
 ```
-![Screenshot 2022-07-22 at 15 44 58](https://user-images.githubusercontent.com/72186807/180464611-71905e85-2ff3-4a4e-8a81-6f34d51725a3.png)
+git clone git@github.com:sanchayarun/QA_IMS_Project.git
 ```
 #### Step two
 Go to your cloned directory then open and run files sql-schema.sql and sql-data.sql within the MySQL workbench to create the database on your local server.
@@ -54,7 +54,14 @@ db.password="password here" - (default is  = root)
 #### Step Four
 Open eclipse and open the QA_IMS_Project. right click on the Runner.java file and run as Java application. The program should start in the console. The console should look like this:
 ```
-https://user-images.githubusercontent.com/72186807/180468193-38000a95-d022-4848-b7a0-692a49385852.png
+Welcome to the Inventory Management System!
+Which entity would you like to use?
+CUSTOMER: Information about customers
+ITEM: Individual Items
+ORDER: Purchases of items
+ORDER_ITEM: Items in Order
+STOP: To close the application
+
 
 ```
 #### Step Five
@@ -70,7 +77,19 @@ When all previou steps have been followed you can run tests. To run the tests ri
 Unit tests are performed on the smaller units of the application such as classes and methods.
 
 ```
-![Screenshot 2022-07-22 at 16 03 47](https://user-images.githubusercontent.com/72186807/180470469-9a1df36c-ac23-4fa9-b221-31b071504524.png)
+@Test
+	public void testCreate() {
+		final Customer created = new Customer(2L, "chris", "perrins");
+		assertEquals(created, DAO.create(created));
+	}
+
+	@Test
+	public void testReadAll() {
+		List<Customer> expected = new ArrayList<>();
+		expected.add(new Customer(1L, "jordan", "harrison"));
+		assertEquals(expected, DAO.readAll());
+	}
+
 ```
 
 ### Integration Tests 
@@ -79,7 +98,31 @@ Integration tests are tests that involves disk access, application service and/o
 These integration tests were done on CustomerController
 
 ```
-![Screenshot 2022-07-22 at 16 21 37](https://user-images.githubusercontent.com/72186807/180471414-c97f5b45-a630-4830-81a1-f5b54b4e4592.png)
+@Test
+	public void testCreate() {
+		final String F_NAME = "barry", L_NAME = "scott";
+		final Customer created = new Customer(F_NAME, L_NAME);
+
+		Mockito.when(utils.getString()).thenReturn(F_NAME, L_NAME);
+		Mockito.when(dao.create(created)).thenReturn(created);
+
+		assertEquals(created, controller.create());
+
+		Mockito.verify(utils, Mockito.times(2)).getString();
+		Mockito.verify(dao, Mockito.times(1)).create(created);
+	}
+
+	@Test
+	public void testReadAll() {
+		List<Customer> customers = new ArrayList<>();
+		customers.add(new Customer(1L, "jordan", "harrison"));
+
+		Mockito.when(dao.readAll()).thenReturn(customers);
+
+		assertEquals(customers, controller.readAll());
+
+		Mockito.verify(dao, Mockito.times(1)).readAll();
+	}
 
 ```
 
