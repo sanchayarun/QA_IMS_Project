@@ -26,11 +26,6 @@
 			public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
 				Long orderId = resultSet.getLong("order_id");
 				Long customerId = resultSet.getLong("fk_customer_id");
-//				Long itemId = resultSet.getLong("item_id");
-//				String itemName = resultSet.getString("item_name");
-//				Double itemPrice = resultSet.getDouble("item_price");
-//				Long quantity = resultSet.getLong("quantity");
-//				Double totalCost = resultSet.getDouble("Need to put in a sum of quantity * price");   // need to add commands for MySQL to return price
 				return new Order(orderId, customerId);
 			}
 		
@@ -162,7 +157,36 @@
 				}
 				return 0;
 			}
+	
+			
+			
+			// Could not implement totalCost() method
+			
+//			public double totalCost(Long orderId) {
+//				try (Connection connection = DBUtils.getInstance().getConnection();
+//						PreparedStatement statement = connection.prepareStatement("SELECT ROUND(SUM(i.item_value * oi.Quantity), 2) FROM items i INNER JOIN order_items oi ON i.item_id = oi.fk_item_id WHERE oi.fk_order_id = ?;");) {
+//					statement.setLong(1, orderId);
+//					try(ResultSet resultSet = statement.executeQuery();){
+//						resultSet.next();
+//						return resultSet.getDouble("ROUND(SUM(i.item_value * oi.Quantity), 2)");
+//					}
+//				} catch (SQLException e) {
+//					LOGGER.debug(e);
+//					LOGGER.error(e.getMessage());
+//				}
+//				return 0;
+//			}
+//	
+	
+	
 	}
+	
+	
+	
+	
+	
+	
+	
 
 	
 
